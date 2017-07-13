@@ -1,6 +1,8 @@
 from flask import Flask, render_template, flash, request, url_for, redirect
 from content_management import Content
 
+from dbconnect import conncection
+
 TOPIC_DICT = Content()
 
 app = Flask(__name__)
@@ -19,7 +21,7 @@ def page_not_found(e):
 
 @app.route('/login/', methods = ['GET', 'POST'])
 def login_page():
-    error = None
+    error = ''
     try:
         if request.method == "POST":
             attempted_username = request.form['username']
@@ -37,6 +39,14 @@ def login_page():
     except Exception as e:
         # flash(e)
         return render_template("login.html", error = error)
+
+@app.route('/register/', methods = ['GET', 'POST'])
+def register_page():
+    try:
+        c, conn = conncection()
+        return("okay")
+    except Exception as e:
+        return(str(e))
 
 if __name__ == "__main__":
     app.run()

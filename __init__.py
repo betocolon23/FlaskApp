@@ -25,8 +25,8 @@ def login_page():
             attempted_username = request.form['username']
             attempted_password = request.form['password']
 
-            flash(attempted_username)
-            flash(attempted_password)
+            # flash(attempted_username)
+            # flash(attempted_password)
 
             if attempted_username == "admin" and attempted_password == 'password':
                 return redirect(url_for('dashboard'))
@@ -35,7 +35,7 @@ def login_page():
         return render_template("login.html", error = error)
 
     except Exception as e:
-        flash(e)
+        # flash(e)
         return render_template("login.html", error = error)
 
 if __name__ == "__main__":

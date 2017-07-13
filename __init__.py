@@ -2,6 +2,7 @@ from flask import Flask, render_template, flash, request, url_for, redirect
 from content_management import Content
 
 from wtforms import Form
+
 from dbconnect import conncection
 
 TOPIC_DICT = Content()

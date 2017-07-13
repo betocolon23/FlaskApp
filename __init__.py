@@ -43,12 +43,14 @@ def login_page():
 
 
 class RegistrationForm(Form):
-    username = TextField('Username', [validators.Lenght(min = 4, max = 20)])
-    email = TextField('Email Address', [validators.Lenght(min = 6, max = 50)])
-    password = PasswordField('Password', [validators.Required(), validators.EqualTo('confrim', message = "Password must match.")])
-    confrim = PasswordField('Repeat Password')
-
-    accept_tos = BooleanField('I accept the <a href="/tos/"Terms of Service</a> and the <a href="/privacy/"Privacy Notice </a> (Last updated Jan 2015)', [validators.Required()])
+    username = TextField('Username', [validators.Length(min=4, max=20)])
+    email = TextField('Email Address', [validators.Length(min=6, max=50)])
+    password = PasswordField('New Password', [
+        validators.Required(),
+        validators.EqualTo('confirm', message='Passwords must match')
+    ])
+    confirm = PasswordField('Repeat Password')
+    accept_tos = BooleanField('I accept the Terms of Service and Privacy Notice (updated Jan 22, 2015)', [validators.Required()])
 
 @app.route('/register/', methods = ['GET', 'POST'])
 def register_page():

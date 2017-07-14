@@ -3,6 +3,9 @@ from content_management import Content
 
 from flask_wtf import Form
 
+from wtforms import TextField, BooleanField,IntegerField
+from wtforms.validators import Required
+
 from dbconnect import conncection
 
 TOPIC_DICT = Content()

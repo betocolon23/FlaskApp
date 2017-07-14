@@ -1,7 +1,7 @@
 from flask import Flask, render_template, flash, request, url_for, redirect
 from content_management import Content
 
-from flask_wtf import FlaskForm
+from flask_wtf import Form
 
 from dbconnect import conncection
 

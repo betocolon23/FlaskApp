@@ -1,10 +1,9 @@
 from flask import Flask, render_template, flash, request, url_for, redirect
 from content_management import Content
 
-from flask_wtf import Form
-
-from wtforms import TextField, BooleanField,IntegerField
-from wtforms.validators import Required
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
 
 from dbconnect import conncection
 
@@ -46,7 +45,7 @@ def login_page():
         return render_template("login.html", error = error)
 
 
-class RegistrationForm(Form):
+class RegistrationForm(FlaskForm):
     username = TextField('Username', [validators.Length(min=4, max=20)])
     email = TextField('Email Address', [validators.Length(min=6, max=50)])
     password = PasswordField('New Password', [validators.Required(), validators.EqualTo('confirm', message='Passwords must match')])

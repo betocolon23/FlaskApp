@@ -7,7 +7,7 @@ from MySQLdb import escape_string as thwart
 import gc
 
 
-from dbconnect import conncection
+from dbconnect import connection
 
 TOPIC_DICT = Content()
 

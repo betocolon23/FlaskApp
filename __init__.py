@@ -67,8 +67,7 @@ def register_page():
             c, conn = connection()
 
             # Inyeccion a la base de datos
-            x = c.execute("SELECT * FROM users WHERE username = (%s)",
-                          (thwart(username)))
+            x = c.execute("SELECT * FROM users WHERE username = (%s)",(username,))
 
             if int(x) > 0:
                 flash("That username is already taken, please choose another")
